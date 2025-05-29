@@ -1,3 +1,20 @@
+## TMUX Helper Scripts
+
+Enhance your terminal workflow with the following tmux helper functions. Add them to your shell configuration file (e.g. `~/.zshrc` or `~/.bashrc`):
+
+- **`tmux_attach_session`**  
+  Attach to a named tmux session.
+
+- **`tmux_new_session`**  
+  Creates and attaches to a new session.  
+  If called from within a tmux session, it creates a detached session and switches the client to it.
+
+- **`tmux_kill_session`**  
+  Intelligent session termination:
+  - No arguments (inside tmux): kills the current session.
+  - `--all`: kills all tmux sessions.
+  - `<session-name>`: kills the specified session.
+
 `~/.bashrc` or `~/.zshrc`
 ```bash
 tmux_attach_session() {
@@ -50,7 +67,14 @@ tmux_kill_session() {
 ```
 
 
-`~/.tmux.conf`
+## TMUX Mouse Integration
+
+For better usability, add the following to `~/.tmux.conf`:
+
+- Enable mouse support for pane resizing and scrolling.
+- Use vi-style keybindings in copy mode.
+- Support for visual selection (`v`) and yanking (`y`) into the system clipboard using `xclip`.
+
 ```
 set -g mouse on
 setw -g mode-keys vi
@@ -59,4 +83,7 @@ bind-key -T copy-mode-vi y send -X copy-selection
 bind-key -T copy-mode-vi y send -X copy-pipe-and-cancel "xclip -selection clipboard -in"
 
 ```
+
+After editing, reload tmux config without restarting:`~/.tmux.conf`
+
 `tmux source-file ~/.tmux.conf`
