@@ -1,3 +1,5 @@
+# Quick Install
+`git clone --depth 1 https://github.com/kjtakke/tmux /tmp/kjtakke_tmux && bash /tmp/kjtakke_tmux/install.sh`
 ## TMUX Helper Scripts
 
 Enhance your terminal workflow with the following tmux helper functions. Add them to your shell configuration file (e.g. `~/.zshrc` or `~/.bashrc`):
